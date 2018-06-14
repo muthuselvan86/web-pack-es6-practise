@@ -1,1 +1,1 @@
-# web-pack-es6-practise
+# webpack-es6-practise
