@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="course-button left">
+        <button type="button" class="btn btn-link btn-sm">
+            <a href="#home">
+                <span class="glyphicon glyphicon-arrow-left"></span> Go Back</a>
+        </button>
+    </div>
+    <div>
+        <h4>{{course.title}}</h4>
+        <p>{{course.description}}</p>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td>Skill</td>
+                    <td>{{course.skill}}</td>
+                </tr>
+                <tr>
+                    <td>time</td>
+                    <td>{{course.time}} secs</td>
+                </tr>
+                <tr>
+                    <td>Lesson(s) count </td>
+                    <td>{{course.lessons_count}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="course-button right">
+        <button type="button" class="btn btn-link btn-xs">(
+            <a href="#editcourse">
+                <span class="glyphicon glyphicon-pencil"></span> Edit</a>
+        </button>
+        <span style="color:#337ab7">|</span>
+        <button type="button" class="btn btn-link btn-xs">
+            <a href="#deletecourse">
+                <span class="glyphicon glyphicon-trash"></span> Delete </a>)
+        </button>
+    </div>
+</div>
