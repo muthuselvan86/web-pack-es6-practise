@@ -1,0 +1,54 @@
+/* Remove the navbar's default rounded borders and increase the bottom margin */
+.navbar {
+  margin-bottom: 50px;
+  border-radius: 0;
+}
+
+/* Remove the jumbotron's default bottom margin */
+.jumbotron {
+  margin-bottom: 0;
+  padding: 2rem 2rem;
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.welcome {
+  padding: 30px 15px;
+}
+
+.welcome p {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.85em;
+}
+
+.panel-primary {
+  border-color: #696969;
+}
+
+.panel-primary > .panel-heading {
+  background-color: #708090;
+  border-color: #708090;
+}
+
+.courses-view-type{
+  text-align:right;
+  margin-bottom: 30px;
+}
+
+.course-button {
+  padding: 10px 0;
+}
+
+.course-button.right {
+  float: right;
+}
+
+.alert-info {
+  margin-bottom: 75px;
+  margin-top: 25px;
+}
