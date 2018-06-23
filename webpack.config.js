@@ -35,7 +35,7 @@ module.exports = (env, argv) => {
 
         resolve: {
             modules: ["./", "node_modules", "src"],
-            extensions: [".js", ".hbs", ".css", ".scss"]
+            extensions: [".js", ".hbs", ".css", ".scss", ".less"]
         },
 
         module: {
@@ -75,13 +75,15 @@ module.exports = (env, argv) => {
                     test: /\.(less)$/,
                     use: ExtractTextPlugin.extract({
                         use: [{
-                                loader: 'css-loader' // translates CSS into CommonJS modules
+                                loader: 'css-loader', // translates CSS into CommonJS modules
+
                             },
                             {
                                 loader: 'less-loader' // compiles Less to CSS
                             }
                         ],
-                        fallback: "style-loader"
+                        fallback: "style-loader",
+                        publicPath:"../"
                     })
 
                 },
@@ -106,7 +108,8 @@ module.exports = (env, argv) => {
                                 loader: 'sass-loader' // compiles Sass to CSS
                             }
                         ],
-                        fallback: "style-loader"
+                        fallback: "style-loader",
+                        publicPath:"../"
                     })
 
                 },

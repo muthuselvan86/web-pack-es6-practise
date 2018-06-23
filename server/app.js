@@ -25,7 +25,7 @@ app.use(cookieParser());
 
 // To return the static content
 if (app.get('env') === "development") {
-  app.use(express.static(path.join(__dirname, '../src'), {
+  app.use(express.static(path.join(__dirname, '../dist'), {
     "index": "index.html"
   }));
 } else {
