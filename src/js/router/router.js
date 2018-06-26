@@ -1,34 +1,38 @@
 // Router module.
 
 // libs
-import Backbone from 'backbone';
+import Backbone from "backbone";
 
 // modules
-import HomeController from '../controller/list-course';
-import ViewCourseController from '../controller/view-course';
-import CreateCourseController from '../controller/create-course';
-import DeleteCourseController from '../controller/delete-course';
-import EditCourseController from '../controller/edit-course';
-import UnderConstructioController from '../controller/under-construction';
+import HomeController from "../controller/list-course";
+import ViewCourseController from "../controller/view-course";
+import CreateCourseController from "../controller/create-course";
+import DeleteCourseController from "../controller/delete-course";
+import EditCourseController from "../controller/edit-course";
+import UnderConstructioController from "../controller/under-construction";
 
 class Router extends Backbone.Router {
+  constructor(options = {}) {
+    super(
+      Object.assign(
+        {},
+        {
+          routes: {
+            home: HomeController,
+            "viewcourse/:id": ViewCourseController,
+            createcourse: UnderConstructioController,
+            "editcourse(/:id)": UnderConstructioController,
+            "deletecourse(/:id)": UnderConstructioController,
+            "*splat": HomeController
+          }
+        }
+      )
+    );
+  }
 
-    constructor(options = {}) {
-        super(Object.assign({}, {
-            routes: {
-                "home": HomeController,
-                "viewcourse/:id": ViewCourseController,
-                "createcourse": UnderConstructioController,
-                "editcourse(/:id)": UnderConstructioController,
-                "deletecourse(/:id)": UnderConstructioController,
-                "*splat": HomeController
-            }
-        }));
-    }
-
-    initialize() {
-        console.log("Hello Router");
-    }
-};
+  initialize() {
+    console.log("Hello Router");
+  }
+}
 
 export default Router;

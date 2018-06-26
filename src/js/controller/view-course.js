@@ -3,11 +3,11 @@
  */
 
 // Dependencies
-import CourseView from '../views/course-view';
+import CourseView from "../views/course-view";
 
 // Export module.
-export default function () {
+export default function() {
   new CourseView({
     el: "#page-container"
   }).render();
-};
+}

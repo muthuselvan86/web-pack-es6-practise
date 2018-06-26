@@ -3,5 +3,5 @@
  */
 
 export default () => {
-    console.log(`controller ; delete`);
+  console.log(`controller ; delete`);
 };

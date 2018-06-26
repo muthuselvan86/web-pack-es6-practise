@@ -2,25 +2,29 @@
  * This view creates a row of panels.
  */
 
-import Backbone from 'backbone';
-import CourseRowItemTmpl from '../templates/course-list-item';
-import Session from '../app/session';
+import Backbone from "backbone";
+import CourseRowItemTmpl from "../templates/course-list-item";
+import Session from "../app/session";
 
 export default class CourseListItemView extends Backbone.View {
   constructor(options) {
-    super(Object.assign({}, options, {
-      events: {
-        'click .course-link': "handleClick"
-      }
-    }))
+    super(
+      Object.assign({}, options, {
+        events: {
+          "click .course-link": "handleClick"
+        }
+      })
+    );
     this.options = options;
   }
 
   //Render the view
   render() {
-    this.$el.html(CourseRowItemTmpl({
-      course: this.options.course
-    }));
+    this.$el.html(
+      CourseRowItemTmpl({
+        course: this.options.course
+      })
+    );
     return this;
   }
 

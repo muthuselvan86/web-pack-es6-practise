@@ -39,7 +39,9 @@ module.exports = (env, argv) => {
         },
 
         module: {
-            rules: [{
+            rules: [
+                // Templates
+                {
                     test: /\.hbs$/,
                     loader: "handlebars-loader"
                 },
@@ -53,6 +55,8 @@ module.exports = (env, argv) => {
                         }
                     }]
                 },
+
+                //Fonts
                 {
                     test: /\.(ttf|woff|eot|svg|woff2)$/,
                     use: [{
@@ -64,6 +68,8 @@ module.exports = (env, argv) => {
                         }
                     }]
                 },
+
+                // Styles
                 {
                     test: /\.css$/,
                     use: ExtractTextPlugin.extract({
@@ -113,6 +119,8 @@ module.exports = (env, argv) => {
                     })
 
                 },
+
+                // Javascript
                 {
                     test: /.\js$/,
                     loader: "babel-loader",

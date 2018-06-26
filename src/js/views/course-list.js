@@ -3,21 +3,22 @@
  */
 
 // Dependencies.
-import Backbone from 'backbone';
-import CourseListTmpl from '../templates/course-list';
-import CourseListRowView from '../views/course-list-row';
-import CoursesCollection from '../collections/courses';
+import Backbone from "backbone";
+import CourseListTmpl from "../templates/course-list";
+import CourseListRowView from "../views/course-list-row";
+import CoursesCollection from "../collections/courses";
 
 class CouseListView extends Backbone.View {
-
   constructor(options) {
-    super(Object.assign({}, options, {
-      events: {
-        "click .next-elem": "showNextPage",
-        "click .previous-elem": "showPreviousPage",
-        "click .courses-view-type .btn-default": "toggleView"
-      }
-    }));
+    super(
+      Object.assign({}, options, {
+        events: {
+          "click .next-elem": "showNextPage",
+          "click .previous-elem": "showPreviousPage",
+          "click .courses-view-type .btn-default": "toggleView"
+        }
+      })
+    );
   }
 
   // Initialize the model
@@ -33,11 +34,11 @@ class CouseListView extends Backbone.View {
   resolvePromise() {
     this.getLoader();
     var _self = this;
-    this.promise.done(function () {
+    this.promise.done(function() {
       _self.render();
       _self.renderPanelRows(_self.collection.getPage(_self.collection.state.currentPage).toJSON());
     });
-    this.promise.fail(function () {
+    this.promise.fail(function() {
       _self.getError("we are unable to process your request!");
     });
   }
@@ -58,7 +59,9 @@ class CouseListView extends Backbone.View {
    * Loader symbol.
    */
   getLoader() {
-    this.$el.html('<div><center><i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i><center></div>');
+    this.$el.html(
+      '<div><center><i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i><center></div>'
+    );
   }
 
   /**
@@ -67,8 +70,8 @@ class CouseListView extends Backbone.View {
   getError(errorText) {
     this.$el.html(
       '<div class="alert alert-danger"><strong><span class="glyphicon glyphicon-alert"></span> Error : </strong>' +
-      errorText +
-      "</div>"
+        errorText +
+        "</div>"
     );
   }
 
@@ -83,11 +86,11 @@ class CouseListView extends Backbone.View {
     for (var i = 0; i < data.length; i += this.colSize) {
       rowArray = data.slice(i, i + this.colSize);
 
-      this.$el
-        .find(".course-rows")
-        .append(new CourseListRowView({
+      this.$el.find(".course-rows").append(
+        new CourseListRowView({
           rowArray: rowArray
-        }).render().el);
+        }).render().el
+      );
       row++;
     }
 
@@ -98,18 +101,13 @@ class CouseListView extends Backbone.View {
    * Pagination.
    */
   enablePagination() {
-    this.$el
-      .find(".previous-elem")
-      .toggleClass("disabled", !this.collection.hasPreviousPage());
-    this.$el
-      .find(".next-elem")
-      .toggleClass("disabled", !this.collection.hasNextPage());
+    this.$el.find(".previous-elem").toggleClass("disabled", !this.collection.hasPreviousPage());
+    this.$el.find(".next-elem").toggleClass("disabled", !this.collection.hasNextPage());
   }
 
   showNextPage(e) {
     e.preventDefault();
-    if (this.collection.hasNextPage())
-      this.renderPanelRows(this.collection.getNextPage().toJSON());
+    if (this.collection.hasNextPage()) this.renderPanelRows(this.collection.getNextPage().toJSON());
   }
 
   showPreviousPage(e) {
@@ -131,7 +129,6 @@ class CouseListView extends Backbone.View {
     this.collection.setPageSize($(e.currentTarget).data("panelSize"));
     this.renderPanelRows(this.collection.getFirstPage().toJSON());
   }
-
 }
 
 export default CouseListView;

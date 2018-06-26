@@ -3,5 +3,5 @@
  */
 
 export default () => {
-    console.log(`controller ; create`);
+  console.log(`controller ; create`);
 };
