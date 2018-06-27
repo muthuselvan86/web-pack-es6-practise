@@ -28,7 +28,7 @@
   "lint-staged": {
     "./src/**/{**,.}/*.{js,json,css,md,less,sass}": [
       "prettier --write",
-      "lint",
+      "eslint --ignore-path .eslintignore ./src/**/{**,.}/*.js --fix -f stylish",
       "git add"
     ]
   },
