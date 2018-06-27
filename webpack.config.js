@@ -1,12 +1,12 @@
-const webpack = require('webpack'),
+const webpack = require("webpack"),
     path = require("path"),
-    HtmlWebpackPlugin = require('html-webpack-plugin'),
-    CleanWebpackPlugin = require('clean-webpack-plugin'),
-    CopyWebpackPlugin = require('copy-webpack-plugin'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin');
+    HtmlWebpackPlugin = require("html-webpack-plugin"),
+    CleanWebpackPlugin = require("clean-webpack-plugin"),
+    CopyWebpackPlugin = require("copy-webpack-plugin"),
+    ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-module.exports = (env, argv) => {
-    const region = (env && env.NODE_ENV === "production") ? "production" : "development";
+module.exports = env => {
+    const region = env && env.NODE_ENV === "production" ? "production" : "development";
     return {
         mode: region,
 
@@ -47,26 +47,30 @@ module.exports = (env, argv) => {
                 },
                 {
                     test: /\.(png|jpg|jpeg|gif)$/,
-                    use: [{
-                        loader: 'url-loader',
-                        options: {
-                            limit: 50000,
-                            outputPath: 'img'
+                    use: [
+                        {
+                            loader: "url-loader",
+                            options: {
+                                limit: 50000,
+                                outputPath: "img"
+                            }
                         }
-                    }]
+                    ]
                 },
 
                 //Fonts
                 {
                     test: /\.(ttf|woff|eot|svg|woff2)$/,
-                    use: [{
-                        loader: 'url-loader',
-                        options: {
-                            limit: 50000,
-                            outputPath: 'font',
-                            // publicPath: "../"
+                    use: [
+                        {
+                            loader: "url-loader",
+                            options: {
+                                limit: 50000,
+                                outputPath: "font"
+                                // publicPath: "../"
+                            }
                         }
-                    }]
+                    ]
                 },
 
                 // Styles
@@ -80,49 +84,54 @@ module.exports = (env, argv) => {
                 {
                     test: /\.(less)$/,
                     use: ExtractTextPlugin.extract({
-                        use: [{
-                                loader: 'css-loader', // translates CSS into CommonJS modules
-
+                        use: [
+                            {
+                                loader: "css-loader" // translates CSS into CommonJS modules
                             },
                             {
-                                loader: 'less-loader' // compiles Less to CSS
+                                loader: "less-loader" // compiles Less to CSS
                             }
                         ],
                         fallback: "style-loader",
-                        publicPath:"../"
+                        publicPath: "../"
                     })
-
                 },
                 {
                     test: /\.(scss)$/,
                     use: ExtractTextPlugin.extract({
-                        use: [{
-                                loader: 'css-loader', // translates CSS into CommonJS modules
+                        use: [
+                            {
+                                loader: "css-loader" // translates CSS into CommonJS modules
                             },
                             {
-                                loader: 'postcss-loader', // Run post css actions
+                                loader: "postcss-loader", // Run post css actions
                                 options: {
-                                    plugins: function () { // post css plugins, can be exported to postcss.config.js
-                                        return [
-                                            require('precss'),
-                                            require('autoprefixer')
-                                        ];
+                                    plugins: function() {
+                                        // post css plugins, can be exported to postcss.config.js
+                                        return [require("precss"), require("autoprefixer")];
                                     }
                                 }
                             },
                             {
-                                loader: 'sass-loader' // compiles Sass to CSS
+                                loader: "sass-loader" // compiles Sass to CSS
                             }
                         ],
                         fallback: "style-loader",
-                        publicPath:"../"
+                        publicPath: "../"
                     })
-
                 },
 
                 // Javascript
+
                 {
-                    test: /.\js$/,
+                    test: /\.js$/,
+                    loader: "eslint-loader",
+                    options: {
+                        emitWarning: true
+                    }
+                },
+                {
+                    test: /\.js$/,
                     loader: "babel-loader",
                     include: [path.resolve(__dirname, "src")],
                     query: {
@@ -138,26 +147,29 @@ module.exports = (env, argv) => {
         },
 
         plugins: [
-            new CleanWebpackPlugin('dist'),
+            new CleanWebpackPlugin("dist"),
             new HtmlWebpackPlugin({
                 hash: true,
-                filename: 'index.html',
-                template: './src/index.hbs',
+                filename: "index.html",
+                template: "./src/index.hbs",
                 showErrors: true,
                 inject: true
             }),
-            new CopyWebpackPlugin([{
-                from: path.resolve(__dirname, 'src', 'font'),
-                to: path.resolve(__dirname, 'dist', 'font')
-            }, {
-                from: path.resolve(__dirname, 'src', 'img'),
-                to: path.resolve(__dirname, 'dist', 'img')
-            }]),
-            new ExtractTextPlugin('css/style.css'),
+            new CopyWebpackPlugin([
+                {
+                    from: path.resolve(__dirname, "src", "font"),
+                    to: path.resolve(__dirname, "dist", "font")
+                },
+                {
+                    from: path.resolve(__dirname, "src", "img"),
+                    to: path.resolve(__dirname, "dist", "img")
+                }
+            ]),
+            new ExtractTextPlugin("css/style.css"),
             new webpack.ProvidePlugin({
-                $: 'jquery',
-                jQuery: 'jquery',
-                'window.jQuery': 'jquery'
+                $: "jquery",
+                jQuery: "jquery",
+                "window.jQuery": "jquery"
             })
         ]
     };
