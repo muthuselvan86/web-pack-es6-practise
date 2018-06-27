@@ -16,15 +16,15 @@ import Router from "./router/router";
 
 // Application module.
 class app {
-  constructor() {
-    new Router();
-    Backbone.history.start({
-      pushState: false
-    });
-  }
+    constructor() {
+        new Router();
+        Backbone.history.start({
+            pushState: false
+        });
+    }
 }
 
 // Initialize the app.
 $(() => {
-  new app();
+    new app();
 });

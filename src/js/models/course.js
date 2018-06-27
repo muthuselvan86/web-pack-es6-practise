@@ -4,7 +4,7 @@
 import Backbone from "backbone";
 
 export default class CouseModel extends Backbone.Model {
-  constructor(options) {
-    super(options);
-  }
+    constructor(options) {
+        super(options);
+    }
 }

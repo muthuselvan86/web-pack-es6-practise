@@ -1,0 +1,47 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true,
+    "amd": true,
+    "jasmine": true
+  },
+  "plugins": [
+    "prettier"
+  ],
+  "extends": [
+    "prettier",
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-var": "warn",
+    "max-len": "off",
+    "comma-dangle": [
+      "error",
+      "only-multiline"
+    ],
+    "no-console": "off",
+    "quote-props": [
+      "error",
+      "as-needed"
+    ],
+    "no-unused-vars": "error",
+    "indent": [
+      "warn",
+      4
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "prettier/prettier": "error"
+  },
+  "globals": {
+    "$": true
+  }
+}

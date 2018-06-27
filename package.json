@@ -21,12 +21,14 @@
     "dev": "webpack-dev-server",
     "build": "webpack --env.NODE_ENV=production",
     "start": "DEBUG=server NODE_ENV=development PORT=3000 node ./server/bin/www",
-    "format": "prettier --write ./src/**/{**,.}/*.{js,json,css,md,less,sass}",
+    "format": "prettier --write ./src/**/{**,.}/*.{json,css,md,less,sass}",
+    "lint": "eslint --ignore-path .eslintignore ./src/**/{**,.}/*.js --fix -f stylish",
     "precommit": "lint-staged"
   },
   "lint-staged": {
     "./src/**/{**,.}/*.{js,json,css,md,less,sass}": [
       "prettier --write",
+      "lint",
       "git add"
     ]
   },
@@ -61,6 +63,10 @@
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
     "debug": "~2.2.0",
+    "eslint": "^5.0.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-prettier": "^2.6.1",
     "express": "~4.13.4",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
