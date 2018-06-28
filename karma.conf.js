@@ -1,6 +1,8 @@
 // Karma configuration
 // Generated on Wed Jun 27 2018 20:11:22 GMT-0400 (EDT)
 
+let webPackConfig = require("./webpack.config");
+
 module.exports = function(config) {
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -11,14 +13,18 @@ module.exports = function(config) {
     frameworks: ["jasmine"],
 
     // list of files / patterns to load in the browser
-    files: ["./src/**/{**,.}/*.js"],
+    files: ["./src/**/{**,.}/*.spec.js"],
 
     // list of files / patterns to exclude
     exclude: [],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {},
+    preprocessors: {
+      "./src/**/{**,.}/*.spec.js": ["webpack"]
+    },
+
+    webpack: webPackConfig,
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
