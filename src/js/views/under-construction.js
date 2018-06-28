@@ -8,13 +8,13 @@ import UnderConstructionTmpl from "../templates/under-construction";
 
 // Module export
 export default class UnderConstructionView extends Backbone.View {
-    constructor(options) {
-        super(options);
-    }
+  constructor(options) {
+    super(options);
+  }
 
-    //Render the view
-    render() {
-        this.$el.html(UnderConstructionTmpl());
-        return this;
-    }
+  //Render the view
+  render() {
+    this.$el.html(UnderConstructionTmpl());
+    return this;
+  }
 }
