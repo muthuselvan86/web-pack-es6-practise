@@ -13,6 +13,7 @@ import "../css/main.css";
 
 // modules
 import Router from "./router/router";
+import test from "helpers/test";
 
 // Application module.
 class app {
@@ -26,5 +27,6 @@ class app {
 
 // Initialize the app.
 $(() => {
+  test(`Here is my testing!!`);
   new app();
 });

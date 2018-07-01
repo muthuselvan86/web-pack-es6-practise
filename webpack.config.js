@@ -34,7 +34,7 @@ module.exports = env => {
     },
 
     resolve: {
-      modules: ["./", "node_modules", "src"],
+      modules: ["./", "node_modules", "private_modules", "src"],
       extensions: [".js", ".hbs", ".css", ".scss", ".less"]
     },
 
@@ -43,7 +43,10 @@ module.exports = env => {
         // Templates
         {
           test: /\.hbs$/,
-          loader: "handlebars-loader"
+          loader: "handlebars-loader",
+          query: {
+            helperDirs: [path.join(__dirname, "private_modules", "handlebar-helpers")]
+          }
         },
         {
           test: /\.(png|jpg|jpeg|gif)$/,
